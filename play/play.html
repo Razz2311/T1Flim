@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web movie</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="swiper-bundle.min.css">
+    <link rel="shortcut icon" href="t/logot1.png" type="image/x-icon">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <!-- Thêm các meta tags quan trọng -->
+        <meta name="description" content="Trang web xem phim trực tuyến với nhiều thể loại phim đa dạng">
+        <meta name="keywords" content="phim, xem phim, phim hành động, phim hài, phim mới">
+        <meta name="author" content="T1FLIM">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            font-family: Arial, sans-serif;
+        }
+        #trailer-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        #trailer-wrapper {
+            width: 90%;
+            max-width: 900px;
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            margin: 20px 0;
+        }
+        #trailer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        #movie-info {
+            color: white;
+            text-align: center;
+            padding: 15px;
+            max-width: 900px;
+            width: 90%;
+        }
+        #close-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: 1px solid white;
+            padding: 10px 20px;
+            cursor: pointer;
+            z-index: 11;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        #close-btn:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        .play-instruction {
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Nút đóng -->
+    <button id="close-btn" onclick="window.location.href='../index.html'">✕ Đóng</button>
+
+    <!-- Phần chứa trailer -->
+    <div id="trailer-container">
+        <div id="trailer-wrapper">
+            <iframe id="trailer" src="" frameborder="0" 
+                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen></iframe>
+        </div>
+        
+        <!-- Thông tin phim -->
+        <div id="movie-info">
+            <h2 id="movie-title">Đang tải phim...</h2>
+            <p id="movie-genre"></p>
+            <div class="play-instruction">
+                Nếu video không tự động phát, vui lòng nhấn vào nút play trên video
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Lấy ID từ URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const movieId = urlParams.get('id');
+
+        // Database phim tạm thời nếu không load được file ngoài
+        const fallbackMovies = {
+            1: {
+                title: "Avengers: Endgame",
+                trailer: "https://www.youtube.com/embed/TcMBFSGVi1c",
+                genres: ["Hành động", "Viễn tưởng"]
+            },
+            2: {
+                title: "Joker",
+                trailer: "https://www.youtube.com/embed/zAGVQLHvwOY", 
+                genres: ["Tâm lý", "Kinh dị"]
+            }
+        };
+
+        function loadMovie(id) {
+            let movie;
+            
+            // Thử lấy từ biến movies toàn cục trước
+            if (typeof movies !== 'undefined' && movies[id]) {
+                movie = movies[id];
+            } 
+            // Nếu không có thì dùng database tạm
+            else if (fallbackMovies[id]) {
+                movie = fallbackMovies[id];
+                console.log("Đang sử dụng dữ liệu phim tạm thời");
+            } 
+            // Nếu không tìm thấy phim
+            else {
+                document.getElementById('movie-info').innerHTML = `
+                    <h2>Không tìm thấy phim</h2>
+                    <p>ID phim không hợp lệ</p>
+                    <a href="../index.html">← Quay về trang chủ</a>
+                `;
+                return;
+            }
+
+            // Thiết lập trailer và thông tin phim
+            document.getElementById('trailer').src = movie.trailer;
+            document.getElementById('movie-title').textContent = movie.title;
+            document.getElementById('movie-genre').textContent = `Thể loại: ${movie.genres.join(', ')}`;
+        }
+
+        // Thử load file movie-data.js từ server
+        function loadExternalMovieData() {
+            const script = document.createElement('script');
+            script.src = "../js/movie-data.js";
+            script.onerror = function() {
+                console.log("Không thể tải file movie-data.js, sử dụng dữ liệu tạm");
+                loadMovie(movieId);
+            };
+            script.onload = function() {
+                loadMovie(movieId);
+            };
+            document.head.appendChild(script);
+        }
+
+        // Khởi động
+        if (movieId) {
+            // Thử load dữ liệu từ file ngoài
+            loadExternalMovieData();
+        } else {
+            document.getElementById('movie-info').innerHTML = `
+                <h2>Lỗi</h2>
+                <p>Thiếu ID phim</p>
+                <a href="../index.html">← Quay về trang chủ</a>
+            `;
+        }
+    </script>
+</body>
+</html>

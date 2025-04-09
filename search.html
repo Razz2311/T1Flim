@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kết quả tìm kiếm</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="t/fav-icon.png" type="image/x-icon">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+  <header>
+    <div class="nav container">
+      <a href="index.html" class="logo">Thichxem<span>PHIM</span></a>
+      <div class="search-box">
+        <form id="search-form">
+          <input type="search" id="search-input" placeholder="Tìm kiếm...">
+          <button type="submit"><i class='bx bx-search'></i></button>
+        </form>
+      </div>
+      <a href="#" class="user">
+        <img src="t/user.jpg" alt="" class="uesr-img">
+      </a>
+    </div>
+  </header>
+
+  <!-- Phần kết quả tìm kiếm -->
+  <section class="search-results container">
+    <div id="search-results" class="search-results-grid">
+      <!-- Kết quả sẽ được thêm bằng JavaScript -->
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div class="copyright">
+    <p>&#169;THICHXEMPHIM All Right Reserved</p>
+  </div>
+
+  <script src="search.js"></script>
+</body>
+</html>

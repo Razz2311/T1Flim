@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách phim</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="js/movie-data.js"></script>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Thanh menu giữ nguyên -->
+    <header>
+        <div class="nav container">
+            <a href="index.html" class="logo">
+                T1<span>FLIM</span>
+            </a>
+            <div class="search-box">
+                <input type="search" id="search-input" placeholder="Tìm kiếm phim...">
+                <i class='bx bx-search' id="search-btn"></i>
+                <div id="suggestions-box"></div> <!-- Gợi ý sẽ hiển thị ở đây -->
+            </div>
+            <a href="#" class="user">
+                <img src="t/user.jpg" alt="" class="uesr-img">
+            </a>
+            <div class="navbar">
+                <a href="index.html" id="home-button" class="nav-link nav-active">
+                    <i class='bx bx-home'></i>
+                    <span class="nav-link-title">Trang Chủ</span>
+                </a>
+                
+                <div class="nav-item has-submenu">
+                    <a href="#" class="nav-link">
+                        <i class='bx bx-category'></i>
+                        <span class="nav-link-title">Thể Loại</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="category.html?genre=Hành động">Hành động</a></li>
+                        <li><a href="category.html?genre=Hài hước">Hài hước</a></li>
+                        <li><a href="category.html?genre=Tình cảm">Tình cảm</a></li>
+                        <li><a href="category.html?genre=Kinh dị">Kinh dị</a></li>
+                        <li><a href="category.html?genre=Hoạt hình">Hoạt hình</a></li>
+                        <li><a href="category.html?genre=Phiêu lưu">Phiêu lưu</a></li>
+                        <li><a href="category.html?genre=Tâm lý">Tâm lý</a></li>
+                        <li><a href="category.html?genre=Viễn tưởng">Viễn tưởng</a></li>
+                        <li><a href="category.html?genre=Võ thuật">Võ thuật</a></li>
+                    </ul>
+                </div>
+                
+                <a href="#popular" class="nav-link">
+                    <i class='bx bxs-hot'></i>
+                    <span class="nav-link-title">Xu Hướng</span>
+                </a>
+                
+                <a href="#movies" class="nav-link">
+                    <i class='bx bx-compass'></i>
+                    <span class="nav-link-title">Khám Phá</span>
+                </a>
+                
+                <a href="#favorites" class="nav-link">
+                    <i class='bx bx-heart'></i>
+                    <span class="nav-link-title">Yêu Thích</span>
+                </a>
+            </div>
+            
+        </div>
+    </header>
+
+    <!-- Phần hiển thị danh sách phim theo thể loại -->
+    <section class="movies container">
+        <h2 class="heading-title" id="category-title">Phim thể loại: </h2>
+        <div class="movies-content" id="movies-list"></div>
+    </section>
+
+    <script src="js/category.js"></script>
+</body>
+<script src="js/home-button.js"></script>
+</html>

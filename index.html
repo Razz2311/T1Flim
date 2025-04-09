@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web movie</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="swiper-bundle.min.css">
+    <link rel="shortcut icon" href="t/logot1.png" type="image/x-icon">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <!-- Thêm các meta tags quan trọng -->
+    <meta name="description" content="Trang web xem phim trực tuyến với nhiều thể loại phim đa dạng">
+    <meta name="keywords" content="phim, xem phim, phim hành động, phim hài, phim mới">
+    <meta name="author" content="T1FLIM">
+        
+
+</head>
+<div class="loading">
+    <div class="loading-spinner"></div>
+</div>
+<script src="js/movie-data.js"></script>
+<script src="js/search-suggestions.js"></script>
+<body>
+    <header>
+        <div class="nav container">
+            <a href="index.html" class="logo">
+                T1<span>FLIM</span>
+            </a>
+            <div class="search-box">
+                <input type="search" id="search-input" placeholder="Tìm kiếm phim...">
+                <i class='bx bx-search' id="search-btn"></i>
+                <div id="suggestions-box"></div> <!-- Gợi ý sẽ hiển thị ở đây -->
+            </div>
+            <a href="#" class="user">
+                <img src="t/user.jpg" alt="" class="uesr-img">
+            </a>
+            <div class="navbar">
+                <a href="index.html" id="home-button" class="nav-link nav-active">
+                    <i class='bx bx-home'></i>
+                    <span class="nav-link-title">Trang Chủ</span>
+                </a>
+                
+                <div class="nav-item has-submenu">
+                    <a href="#" class="nav-link">
+                        <i class='bx bx-category'></i>
+                        <span class="nav-link-title">Thể Loại</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="category.html?genre=Hành động">Hành động</a></li>
+                        <li><a href="category.html?genre=Hài hước">Hài hước</a></li>
+                        <li><a href="category.html?genre=Tình cảm">Tình cảm</a></li>
+                        <li><a href="category.html?genre=Kinh dị">Kinh dị</a></li>
+                        <li><a href="category.html?genre=Hoạt hình">Hoạt hình</a></li>
+                        <li><a href="category.html?genre=Phiêu lưu">Phiêu lưu</a></li>
+                        <li><a href="category.html?genre=Tâm lý">Tâm lý</a></li>
+                        <li><a href="category.html?genre=Viễn tưởng">Viễn tưởng</a></li>
+                        <li><a href="category.html?genre=Võ thuật">Võ thuật</a></li>
+                    </ul>
+                </div>
+                
+                <a href="#popular" class="nav-link">
+                    <i class='bx bxs-hot'></i>
+                    <span class="nav-link-title">Xu Hướng</span>
+                </a>
+                
+                <a href="#movies" class="nav-link">
+                    <i class='bx bx-compass'></i>
+                    <span class="nav-link-title">Khám Phá</span>
+                </a>
+                
+                <a href="#favorites" class="nav-link">
+                    <i class='bx bx-heart'></i>
+                    <span class="nav-link-title">Yêu Thích</span>
+                </a>
+            </div>
+            
+        </div>
+    </header>
+    <section class="home container" id="home" style="position: relative; overflow: hidden;">
+        <!-- Video trailer -->
+        <video id="t1Trailer" autoplay muted loop playsinline
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
+            <source src="v/t1-trailer.mp4" type="video/mp4">
+            Trình duyệt của bạn không hỗ trợ video.
+        </video>
+    
+        <!-- Nội dung hiển thị -->
+        <div class="home-text" style="position: relative; z-index: 1; color: white;">
+            <h1 class="home-title">T1 Faker - Huyền thoại LMHT</h1>
+            <p>Nhà vô địch CKTG 2023</p>
+            <a href="#" class="watch-btn" onclick="unmuteVideo()">
+                <i class='bx bx-volume-full'></i>
+                <span>Bật tiếng</span>
+            </a>
+        </div>
+    </section>
+    
+    <script>
+        function unmuteVideo() {
+            const video = document.getElementById("t1Trailer");
+            video.muted = false;
+            video.play();
+        }
+    </script>
+<section class="popular container" id="popular">
+    <div class="heading">
+        <h2 class="heading-title">Phim Phổ Biến</h2>
+        <!--sw buttons-->
+        <div class="swiper-btn">
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+          
+        </div>
+    </div>
+    <div class="popuplar-content swiper">
+        <div class="swiper-wrapper">
+            <!--box 1-->
+            <div class="swiper-slide">
+                <div class="movie-box">
+                    <img src="t/t1vsjdg.png" alt="" class="movie-box-img">
+                    <div class="box-text">
+                        <h2 class="movie-title">CKTG 2023 JDG vs T1 </h2>
+                        <a href="play/play.html?id=1" class="watch-btn play-btn">
+                            <i class='bx bx-right-arrow'></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+                <!--box 2-->
+                <div class="swiper-slide">
+                    <div class="movie-box">
+                        <img src="t/popular-movie-2.jpg" alt="" class="movie-box-img">
+                        <div class="box-text">
+                            <h2 class="movie-title">Jungle Cruise: Thám hiểm rừng xanh </h2>
+                            <span class="movie-type">Trẻ em/Phiêu lưu</span>
+                            <a href="play/play.html?id=2" class="watch-btn play-btn">
+                                <i class='bx bx-right-arrow'></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+             
+                    <!--box 3-->
+            <div class="swiper-slide">
+                <div class="movie-box">
+                    <img src="t/popular-movie-3.jpg" alt="" class="movie-box-img">
+                    <div class="box-text">
+                        <h2 class="movie-title">Loki</h2>
+                        <span class="movie-type">Hành Động/Viễn Tưởng</span>
+                        <a href="play/play.html?id=3" class="watch-btn play-btn">
+                            <i class='bx bx-right-arrow'></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+                <!--box 4-->
+                <div class="swiper-slide">
+                    <div class="movie-box">
+                        <img src="t/popular-movie-4.jpg" alt="" class="movie-box-img">
+                        <div class="box-text">
+                            <h2 class="movie-title">Squid Game:Trò chơi con mực </h2>
+                            <span class="movie-type">Hành Động/Drama</span>
+                            <a href="play/play.html?id=4" class="watch-btn play-btn">
+                                <i class='bx bx-right-arrow'></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+             
+                    <!--box 5-->
+            <div class="swiper-slide">
+                <div class="movie-box">
+                    <img src="t/popular-movie-5.jpg" alt="" class="movie-box-img">
+                    <div class="box-text">
+                        <h2 class="movie-title">Chim ưng và Chiến binh mùa đông </h2>
+                        <span class="movie-type">Hành Động/Viễn Tưởng</span>
+                        <a href="play/play.html?id=5" class="watch-btn play-btn">
+                            <i class='bx bx-right-arrow'></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+                <!--box 6-->
+                <div class="swiper-slide">
+                    <div class="movie-box">
+                        <img src="t/popular-movie-6.jpg" alt="" class="movie-box-img">
+                        <div class="box-text">
+                            <h2 class="movie-title">Hawkeye </h2>
+                            <span class="movie-type">Hành Động/Viễn Tưởng</span>
+                            <a href="play/play.html?id=6" class="watch-btn play-btn">
+                                <i class='bx bx-right-arrow'></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                    <!--box 7-->
+            <div class="swiper-slide">
+                <div class="movie-box">
+                    <img src="t/popular-movie-7.jpg" alt="" class="movie-box-img">
+                    <div class="box-text">
+                        <h2 class="movie-title">Đội đặc nhiệm S.H.I.E.L.D </h2>
+                        <span class="movie-type">Hành Động</span>
+                        <a href="play/play.html?id=7" class="watch-btn play-btn">
+                            <i class='bx bx-right-arrow'></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+                <!--box 8-->
+                <div class="swiper-slide">
+                    <div class="movie-box">
+                        <img src="t/popular-movie-8.jpg" alt="" class="movie-box-img">
+                        <div class="box-text">
+                            <h2 class="movie-title">The Flash </h2>
+                            <span class="movie-type">Hành Động/Viễn Tưởng</span>
+                            <a href="play/play.html?id=8" class="watch-btn play-btn">
+                                <i class='bx bx-right-arrow'></i>
+                            </a>
+                        </div>
+                    </div>
+                </div> 
+                <!--box 9-->
+                <div class="swiper-slide">
+                    <div class="movie-box">
+                        <img src="t/popular-movie-9.jpg" alt="" class="movie-box-img">
+                        <div class="box-text">
+                            <h2 class="movie-title">Kamen Rider Geats: 4 Aces and the Black Fox</h2>
+                            <span class="movie-type">Hành Động/Viễn Tưởng</span>
+                            <a href="play/play.html?id=9" class="watch-btn play-btn">
+                                <i class='bx bx-right-arrow'></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>          
+          </div>
+         
+    </div>
+</section>
+<!--pop sectionend-->
+<!--movie section start-->
+<section class ="movies container" id="movies">
+    <div class="heading">
+        <h2 class="heading-title">Đề Xuất</h2>
+    </div>
+    <!--movies content-->
+     <div class="movies-content">
+        <!--mv b1-->
+        <div class="movie-box">
+            <img src="t/2.jpg" alt="" class="movie-box-img">
+            <div class="box-text">
+                <h2 class="movie-title">Peaky Blinders</h2>
+                <span class="movie-type">Hành Động</span>
+                <a href="play/play.html?id=12" class="watch-btn play-btn">
+                    <i class='bx bx-right-arrow'></i>
+                </a>
+            </div>
+        </div>
+        <!--mv b2-->
+        <div class="movie-box">
+            <img src="t/movie-2.jpg" alt="" class="movie-box-img">
+            <div class="box-text">
+                <h2 class="movie-title">Vệ sĩ sát thủ 2: Nhà có nóc</h2>
+                <span class="movie-type">Hành Động/Tội Phạm</span>
+                <a href="play/play.html?id=13" class="watch-btn play-btn">
+                    <i class='bx bx-right-arrow'></i>
+                </a>
+            </div>
+        </div>
+        <!--mv b3-->
+        <div class="movie-box">
+            <img src="t/movie-3.jpg" alt="" class="movie-box-img">
+            <div class="box-text">
+                <h2 class="movie-title">Shang-Chi và huyền thoại Thập Luân</h2>
+                <span class="movie-type">Hành Động/Phiêu Lưu</span>
+                <a href="play/play.html?id=14" class="watch-btn play-btn">
+                    <i class='bx bx-right-arrow'></i>
+                </a>
+            </div>
+        </div>
+        <!--mv b4-->
+        <div class="movie-box">
+            <img src="t/movie-4.jpg" alt="" class="movie-box-img">
+            <div class="box-text">
+                <h2 class="movie-title">Eternals:Chủng tộc bất tử</h2>
+                <span class="movie-type">Hành Động/Viễn Tưởng</span>
+                <a href="play/play.html?id=15" class="watch-btn play-btn">
+                    <i class='bx bx-right-arrow'></i>
+                </a>
+            </div>
+        </div>
+         <!--mv b5-->
+         <div class="movie-box">
+            <img src="t/movie-5.jpg" alt="" class="movie-box-img">
+            <div class="box-text">
+                <h2 class="movie-title">Điệp viên 007:<p> Bóng Ma</h2>
+                <span class="movie-type">Hành Động/Phiêu Lưu</span>
+                <a href="play/play.html?id=16" class="watch-btn play-btn">
+                    <i class='bx bx-right-arrow'></i>
+                </a>
+            </div>
+        </div>
+         <!--mv b6-->
+         <div class="movie-box">
+            <img src="t/movie-6.jpg" alt="" class="movie-box-img">
+            <div class="box-text">
+                <h2 class="movie-title">Phi vụ triệu đô</h2>
+                <span class="movie-type">Hành Động</span>
+                <a href="play/play.html?id=17" class="watch-btn play-btn">
+                    <i class='bx bx-right-arrow'></i>
+                </a>
+            </div>
+        </div>
+         <!--mv b7-->
+         <div class="movie-box">
+            <img src="t/movie-7.jpg" alt="" class="movie-box-img">
+            <div class="box-text">
+                <h2 class="movie-title">Người sói Wolverine</h2>
+                <span class="movie-type">Hành Động/Viễn Tưởng</span>
+                <a href="play/play.html?id=18" class="watch-btn play-btn">
+                    <i class='bx bx-right-arrow'></i>
+                </a>
+            </div>
+        </div>
+         <!--mv b8-->
+         <div class="movie-box">
+            <img src="t/movie-8.jpg" alt="" class="movie-box-img">
+            <div class="box-text">
+                <h2 class="movie-title">Johnny English:Điệp viên không không thấy</h2>
+                <span class="movie-type">Hành Động</span>
+                <a href="play/play.html?id=19" class="watch-btn play-btn">
+                    <i class='bx bx-right-arrow'></i>
+                </a>
+            </div>
+        </div>
+        <!--mv b1-->
+        <div class="movie-box">
+            <img src="t/m1.jpg" alt="" class="movie-box-img">
+            <div class="box-text">
+                <h2 class="movie-title">Venom: Đối mặt tử thù</h2>
+                <span class="movie-type">Hành động/Khoa học<p> viễn tưởng</span>
+                <a href="play/play.html?id=20" class="watch-btn play-btn">
+                    <i class='bx bx-right-arrow'></i>
+                </a>
+            </div>
+        </div>
+        <!--mv b2-->
+        <div class="movie-box">
+            <img src="t/m20.jpg" alt="" class="movie-box-img">
+            <div class="box-text">
+                <h2 class="movie-title">Vệ binh dải Ngân Hà</h2>
+                <span class="movie-type">Hành động/Khoa học<p> viễn tưởng</span>
+                <a href="play/play.html?id=21" class="watch-btn play-btn">
+                    <i class='bx bx-right-arrow'></i>
+                </a>
+            </div>
+        </div>
+        <!--mv b3-->
+        <div class="movie-box">
+            <img src="t/m3.jpg" alt="" class="movie-box-img">
+            <div class="box-text">
+                <h2 class="movie-title">Batman đại chiến Superman:Ánh sáng công lý</h2>
+                <span class="movie-type">Hành Động/Khoa học<p> viễn tưởng</span>
+                <a href="play/play.html?id=22" class="watch-btn play-btn">
+                    <i class='bx bx-right-arrow'></i>
+                </a>
+            </div>
+        </div>
+        <!--mv b4-->
+        <div class="movie-box">
+            <img src="t/m4.jpg" alt="" class="movie-box-img">
+            <div class="box-text">
+                <h2 class="movie-title">Sát thủ John Wick 2</h2>
+                <span class="movie-type">Hành Động/Giật Gân</span>
+                <a href="play/play.html?id=23" class="watch-btn play-btn">
+                    <i class='bx bx-right-arrow'></i>
+                </a>
+            </div>
+        </div>
+        <!--mv b1-->
+        <div class="movie-box">
+            <img src="t/m5.jpg" alt="" class="movie-box-img">
+            <div class="box-text">
+                <h2 class="movie-title">Aquaman: Đế vương Atlantis</h2>
+                <span class="movie-type">Hành Động/Phiêu Lưu</span>
+                <a href="play/play.html?id=24" class="watch-btn play-btn">
+                    <i class='bx bx-right-arrow'></i>
+                </a>
+            </div>
+        </div>
+        <!--mv b2-->
+        <div class="movie-box">
+            <img src="t/m6.jpg" alt="" class="movie-box-img">
+            <div class="box-text">
+                <h2 class="movie-title">Chiến Binh Báo Đen - Black Panther</h2>
+                <span class="movie-type">Hành Động/Khoa học<p> viễn tưởng</span>
+                <a href="play/play.html?id=25" class="watch-btn play-btn">
+                    <i class='bx bx-right-arrow'></i>
+                </a>
+            </div>
+        </div>
+        <!--mv b3-->
+        <div class="movie-box">
+            <img src="t/m7.jpg" alt="" class="movie-box-img">
+            <div class="box-text">
+                <h2 class="movie-title">Thor:Thần Sấm</h2>
+                <span class="movie-type">Hành Động/Kì Ảo</span>
+                <a href="play/play.html?id=26" class="watch-btn play-btn">
+                    <i class='bx bx-right-arrow'></i>
+                </a>
+            </div>
+        </div>
+        <!--mv b4-->
+        <div class="movie-box">
+            <img src="t/m8.png" alt="" class="movie-box-img">
+            <div class="box-text">
+                <h2 class="movie-title">Bumblebee</h2>
+                <span class="movie-type">Hành Động/Viễn Tưởng</span>
+                <a href="play/play.html?id=27" class="watch-btn play-btn">
+                    <i class='bx bx-right-arrow'></i>
+                </a>
+            </div>
+        </div>
+         <!--mv b5-->
+         <div class="movie-box">
+            <img src="t/m9.jpg" alt="" class="movie-box-img">
+            <div class="box-text">
+                <h2 class="movie-title">Cỗ máy tử thần</h2>
+                <span class="movie-type">Hành Động/Viễn Tưởng</span>
+                <a href="play/play.html?id=28" class="watch-btn play-btn">
+                    <i class='bx bx-right-arrow'></i>
+                </a>
+            </div>
+        </div>
+         <!--mv b6-->
+         <div class="movie-box">
+            <img src="t/m10.jpg" alt="" class="movie-box-img">
+            <div class="box-text">
+                <h2 class="movie-title">Thế giới ngầm: Trận chiến đẫm máu</h2>
+                <span class="movie-type">Hành Động/Kinh Dị</span>
+                <a href="play/play.html?id=29" class="watch-btn play-btn">
+                    <i class='bx bx-right-arrow'></i>
+                </a>
+            </div>
+        </div>
+         <!--mv b7-->
+         <div class="movie-box">
+            <img src="t/1.jpg" alt="" class="movie-box-img">
+            <div class="box-text">
+                <h2 class="movie-title">Natra 2:<p>Ma Đồng Náo Hải</h2>
+                <span class="movie-type">Hành Động</span>
+                <a href="play/play.html?id=30" class="watch-btn play-btn">
+                    <i class='bx bx-right-arrow'></i>
+                </a>
+            </div>
+        </div>
+         <!--mv b8-->
+         <div class="movie-box">
+            <img src="t/m12.jpg" alt="" class="movie-box-img">
+            <div class="box-text">
+                <h2 class="movie-title">Warcraft</h2>
+                <span class="movie-type">Hành Động/Viễn Tưởng</span>
+                <a href="play/play.html?id=31" class="watch-btn play-btn">
+                    <i class='bx bx-right-arrow'></i>
+                </a>
+            </div>
+        </div>
+        <!--mv b1-->
+        <div class="movie-box">
+            <img src="t/m13.jpg" alt="" class="movie-box-img">
+            <div class="box-text">
+                <h2 class="movie-title">Siêu thú cuồng nộ</h2>
+                <span class="movie-type">Hành Động/Viễn Tưởng</span>
+                <a href="play/play.html?id=32" class="watch-btn play-btn">
+                    <i class='bx bx-right-arrow'></i>
+                </a>
+            </div>
+        </div>
+        <!--mv b2-->
+        <div class="movie-box">
+            <img src="t/m17.jpg" alt="" class="movie-box-img">
+            <div class="box-text">
+                <h2 class="movie-title">Captain Marvel</h2>
+                <span class="movie-type">Hành Động/Viễn Tưởng</span>
+                <a href="play/play.html?id=33" class="watch-btn play-btn">
+                    <i class='bx bx-right-arrow'></i>
+                </a>
+            </div>
+        </div>
+        <!--mv b3-->
+        <div class="movie-box">
+            <img src="t/m15.jpg" alt="" class="movie-box-img">
+            <div class="box-text">
+                <h2 class="movie-title">Liên minh Công lý</h2>
+                <span class="movie-type">Hành Động/Viễn Tưởng</span>
+                <a href="play/play.html?id=34" class="watch-btn play-btn">
+                    <i class='bx bx-right-arrow'></i>
+                </a>
+            </div>
+        </div>
+        <!--mv b4-->
+        <div class="movie-box">
+            <img src="t/m16.jpeg" alt="" class="movie-box-img">
+            <div class="box-text">
+                <h2 class="movie-title">Doctor Strange: Phù thủy tối thượng</h2>
+                <span class="movie-type">Hành Động/Viễn Tưởng</span>
+                <a href="play/play.html?id=35" class="watch-btn play-btn">
+                    <i class='bx bx-right-arrow'></i>
+                </a>
+            </div>
+        </div>
+
+
+     </div>
+</section>
+<!--movie section end-->
+<!--trang tiếp -->
+<div >
+
+</div>
+
+</div>
+<!--copy-->
+<div class="copyright">
+    <p>&#169;T1 Nơi thở oxi 
+</div>
+
+    <script src="js/swiper-bundle.min.js"></script>   
+    <script src="js/main.js"></script>
+</body>
+<script src="js/home-button.js"></script>
+</html>
